@@ -1,0 +1,15 @@
+.hide-control {
+  position: absolute;
+  bottom: 20px;
+  transform: translateY(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 16px;
+  width: 21px;
+  height: 20px;
+
+  img {
+    cursor: pointer;
+  }
+}

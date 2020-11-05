@@ -1,0 +1,39 @@
+@import "src/assets/scss/index";
+
+.check-email {
+  @extend %auth-section;
+
+  &__container {
+    @extend %auth-container;
+  }
+
+  &__title {
+    @extend %auth-section-title;
+  }
+
+  &__message {
+    @include font-primary-normal-s;
+    text-align: center;
+    width: 340px;
+    color: $black-color;
+  }
+}
+
+@include max-w($sm) {
+  .check-email {
+    padding: 90px 0 64px;
+
+    &__container {
+      border: none;
+      padding: 0 10px;
+    }
+
+    &__title {
+      margin-bottom: 24px;
+    }
+
+    &__message {
+      width: 300px;
+    }
+  }
+}

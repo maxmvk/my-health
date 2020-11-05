@@ -1,0 +1,9 @@
+.inputs-row {
+  display: flex;
+
+  input:first-child {
+    width: 50px;
+    margin-right: 10px;
+    pointer-events: none;
+  }
+}

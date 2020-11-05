@@ -1,0 +1,58 @@
+<div class="lps-connect-modal">
+  <div class="lpc-header">
+    <div class="icon-close" (click)="onClose()">
+      <img src="assets/images/close.svg" alt="Close">
+    </div>
+  </div>
+  <div class="lpc-wrapper" *ngIf="modalType === 'turnOn'">
+    <p>By clicking 'Agree’, I allow the sharing of my personal health data with MyHealth for the purposes
+      of Age calculations that will be updated automatically as my health changes.
+      These settings can be modified later by switching the toggle button OFF.</p>
+    <div class="buttons-container">
+      <button
+        type="button"
+        mat-flat-button
+        class="primary-button"
+        (click)="onlpcDataConnect(true)"
+      >Agree
+      </button>
+      <button
+        type="button"
+        mat-flat-button
+        class="primary-button"
+        (click)="onClose()"
+      >Cancel
+      </button>
+    </div>
+  </div>
+  <div class="lpc-wrapper" *ngIf="modalType === 'turnOff'">
+    <p>By clicking ‘Agree’, I want to stop sharing my personal health data with MyHealth for Age calculations.
+      These settings can be modified later by switching the toggle button ON.</p>
+    <div class="buttons-container">
+      <button
+        type="button"
+        mat-flat-button
+        class="primary-button"
+        (click)="onlpcDataConnect(false)"
+      >Agree
+      </button>
+      <button
+        type="button"
+        mat-flat-button
+        class="primary-button"
+        (click)="onClose()"
+      >Cancel
+      </button>
+    </div>
+  </div>
+  <div class="lpc-wrapper" *ngIf="modalType === 'error'">
+    <p>Unfortunately, no data is currently available and associated with your email address</p>
+    <button
+      type="button"
+      mat-flat-button
+      class="primary-button"
+      (click)="onClose()"
+    >OK
+    </button>
+  </div>
+</div>

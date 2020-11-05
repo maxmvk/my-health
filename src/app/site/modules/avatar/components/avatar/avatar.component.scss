@@ -1,0 +1,43 @@
+@import "src/assets/scss";
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 540px;
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+@include max-w($lg) {
+  .avatar {
+    height: 480px;
+  }
+}
+
+@include max-w($md) {
+  .avatar {
+    height: 400px;
+
+    &__rendering {
+      max-width: 130px;
+      text-align: center;
+      @include font-primary-normal-xs;
+    }
+  }
+}
+
+@include max-w($sm) {
+  .avatar {
+    height: 333px;
+
+    &__rendering {
+      max-width: 100px;
+      @include font-primary-normal-xxs;
+    }
+  }
+}

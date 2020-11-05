@@ -1,0 +1,90 @@
+<div class="avatar-container">
+
+  <h3 class="avatar-container__title">{{(myInfoProps.firstName + ' ' + myInfoProps.lastName) | textTruncate}}</h3>
+  <div class="avatar-container__parameters">
+    <p>{{myInfoProps.dateOfBirth | ageFormatting}}</p>
+    <p *ngIf="myInfoProps.height">{{myInfoProps.height | heightFormatting}}</p>
+    <p *ngIf="myInfoProps.weight">{{myInfoProps.weight | weightFormatting}}</p>
+  </div>
+
+  <div class="avatar-container__content">
+    <div class="avatar-container__age-left" *ngIf="connHLProps">
+      <div class="item">
+        <app-ageome
+          [side]="'left'"
+          [age]="ageomesProps.muscle_age"
+          [title]="'Muscle Age'"
+          [tooltipName]="tooltipNames.muscle_age"
+          [selectedTooltip]="selectedTooltip"
+          (selectTooltipName)="onOpenTooltip($event)">
+        </app-ageome>
+      </div>
+      <div class="item">
+        <app-ageome
+          [side]="'left'"
+          [age]="ageomesProps.renal_age"
+          [title]="'Renal/Kidney Age'"
+          [tooltipName]="tooltipNames.renal_age"
+          [selectedTooltip]="selectedTooltip"
+          (selectTooltipName)="onOpenTooltip($event)">
+        </app-ageome>
+      </div>
+    </div>
+
+    <div class="avatar-container__body">
+
+      <!--      Tooltip component-->
+      <app-tooltip
+        *ngIf="tooltipInfo"
+        [tooltipInfo]="tooltipInfo"
+        (selectTooltipName)="onOpenTooltip($event)">
+      </app-tooltip>
+
+      <!--      overlay for closing tooltip-->
+      <div class="overlay-tooltip" *ngIf="tooltipInfo" (click)="onOpenTooltip(null)"></div>
+
+      <!--      Avatar component-->
+      <app-avatar></app-avatar>
+    </div>
+
+    <div class="avatar-container__age-right" *ngIf="connHLProps">
+      <div class="item">
+        <app-ageome
+          [side]="'right'"
+          [age]="ageomesProps.endocrine_age"
+          [title]="'Endocrine Age'"
+          [tooltipName]="tooltipNames.endocrine_age"
+          [selectedTooltip]="selectedTooltip"
+          (selectTooltipName)="onOpenTooltip($event)">
+        </app-ageome>
+      </div>
+      <div class="item">
+        <app-ageome
+          [side]="'right'"
+          [age]="ageomesProps.liver_age"
+          [title]="'Liver Age'"
+          [tooltipName]="tooltipNames.liver_age"
+          [selectedTooltip]="selectedTooltip"
+          (selectTooltipName)="onOpenTooltip($event)">
+        </app-ageome>
+      </div>
+    </div>
+
+    <div class="avatar-container__age-bottom" *ngIf="connHLProps">
+      <app-ageome
+        [side]="'bottom'"
+        [age]="ageomesProps.overall_age"
+        [title]="'Overall Biological Age'"
+        [tooltipName]="tooltipNames.overall_age"
+        [selectedTooltip]="selectedTooltip"
+        (selectTooltipName)="onOpenTooltip($event)">
+      </app-ageome>
+    </div>
+  </div>
+
+  <a
+    mat-flat-button
+    class="primary-button"
+    [routerLink]="['/my-information']"
+  >Edit avatar</a>
+</div>

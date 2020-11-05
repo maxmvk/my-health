@@ -1,0 +1,182 @@
+@import "src/assets/scss";
+
+.form {
+  border-left: 1px $light-grey-color solid;
+
+  &__title {
+    margin: 0;
+    height: 60px;
+    color: $black-color;
+    padding: 0 30px;
+    @include font-primary-normal-l;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px $light-grey-color solid;
+  }
+
+  &__form {
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .personal-info {
+      padding: 20px 30px;
+      grid-column: 1 / 2;
+      border-right: $light-grey-color 1px solid;
+    }
+
+    .physical-details {
+      padding: 20px 30px;
+      grid-column: 2 / 3;
+
+      .subtitle {
+        margin: 15px 0;
+      }
+    }
+
+    .title {
+      @include font-primary-semi-bold-m;
+      color: $black-color;
+      margin-bottom: 16px;
+    }
+
+    .photo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .button-remote-photo {
+      margin-left: 15px;
+      border-radius: 5px;
+      border: 1px solid $black-color;
+      height: 40px;
+      width: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        vertical-align: baseline !important;
+      }
+
+      &:disabled {
+        border-color: $grey-color;
+      }
+    }
+
+    .button-add-photo {
+      height: 76px;
+      width: 76px;
+      border-radius: 50%;
+      background: $light-grey-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circle-photo {
+      border-radius: 50%;
+      width: 76px;
+      height: 76px;
+      background: $white-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      object-fit: cover;
+    }
+
+    .inputs-row-height {
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        width: calc(50% - 5px);
+      }
+
+      input:first-child {
+        margin-right: 5px;
+      }
+
+      input:last-child {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &__footer {
+    padding: 30px;
+    border-top: $light-grey-color 1px solid;
+
+    .primary-button {
+      //padding: 0 30px;
+      min-width: unset;
+      max-width: unset;
+      width: 90px;
+    }
+  }
+}
+
+#imageInput {
+  display: none;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none !important;
+}
+
+.test1 {
+  overflow: auto;
+}
+
+@include max-w($lg) {
+  .form {
+    padding-bottom: 43px;
+  }
+}
+
+@include max-w($md) {
+  .form {
+    &__title {
+      padding: 0 10px;
+    }
+
+    &__form {
+      .personal-info {
+        padding: 20px 10px;
+      }
+
+      .physical-details {
+        padding: 20px 10px;
+      }
+    }
+  }
+}
+
+@include max-w($sm) {
+  .form {
+    &__title {
+      height: 52px;
+      @include font-primary-normal-m;
+    }
+
+    &__form {
+      .grid-container {
+        display: block;
+      }
+
+      .personal-info {
+        border-bottom: 1px $light-grey-color solid;
+      }
+
+      .title {
+        @include font-primary-semi-bold-s;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

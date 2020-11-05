@@ -1,0 +1,11 @@
+@import "../var/index";
+
+.mat-snack-bar-container.snake-bur-primary {
+  color: $black-color;
+  background-color: $light-grey-color;
+
+  span {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,37 @@
+%auth-section {
+  padding: 120px 0 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+%auth-section-title {
+  @include font-primary-semi-bold-m;
+  color: $black-color;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+%auth-subtitle {
+  @include font-primary-normal-s;
+  text-align: center;
+  margin-bottom: 26px;
+  color: $black-color;
+
+  span {
+    margin-right: 8px;
+  }
+
+  a {
+    color: $violet-blue-color;
+  }
+}
+
+%auth-container {
+  margin: 0 auto;
+  padding: 30px 30px 40px;
+  border: 1px solid $light-grey-color;
+}
+
+%auth-primary-button {
+  margin: 30px auto 0;
+}

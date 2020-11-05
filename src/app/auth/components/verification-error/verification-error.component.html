@@ -1,0 +1,18 @@
+<div class="verification" [ngSwitch]="isLoading">
+  <div *ngSwitchCase="false">
+    <p>This email address was not verified. Please check your inbox (and spam folder) and follow the verification link.</p>
+    <div *ngIf="!showTimer">
+      <span>Still no email?</span>
+      <span class="resend" (click)="resendVerification()">Click here to resend</span>
+    </div>
+    <div *ngIf="showTimer">
+      <span class="timer-grey">Resend in</span>
+      <span>{{timeLeft * 1000 | date:'mm:ss':'UTC'}}</span>
+    </div>
+  </div>
+  <app-progress-spinner
+    [color]="'#f24a0b'"
+    [diameter]="26"
+    *ngSwitchCase="true"
+  ></app-progress-spinner>
+</div>

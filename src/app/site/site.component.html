@@ -1,0 +1,19 @@
+<mat-drawer-container class="site">
+  <mat-drawer
+    class="site__nav"
+    #sideNav
+    [autoFocus]="false"
+    [opened]="(windowInnerWidth$ | async) > 767"
+    [mode]="(windowInnerWidth$ | async) > 767 ? 'side' : 'over'"
+  >
+    <app-navbar (onChooseLink)="sideNav.close()"></app-navbar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <app-header (onToggleMenu)="sideNav.toggle()"></app-header>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>

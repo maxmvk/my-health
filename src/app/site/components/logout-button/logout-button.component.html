@@ -1,0 +1,14 @@
+<button
+  class="logout"
+  type="button"
+  mat-icon-button
+  aria-label="logout"
+  (click)="localStorageService.logOut()"
+  matTooltip="Sign out"
+>
+  <img
+    class="logout__img"
+    [src]="'assets/images/' + icons[colorProps]"
+    alt="Logout"
+  >
+</button>

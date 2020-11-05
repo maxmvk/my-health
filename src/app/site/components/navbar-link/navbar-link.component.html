@@ -1,0 +1,12 @@
+<a
+  class="link"
+  matRipple [routerLink]="routeProps.routerLink"
+  routerLinkActive="active"
+>
+  <img
+    class="link__img"
+    [src]="'assets/images/' + routeProps.icon"
+    [alt]="routeProps.icon"
+  >
+  <span class="link__label">{{routeProps.label}}</span>
+</a>

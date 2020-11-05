@@ -1,0 +1,262 @@
+<section class="register">
+
+  <div class="register__container">
+
+    <h4 class="register__title">Sign up</h4>
+
+    <p class="register__subtitle">
+      <span>Already have an account?</span>
+      <a routerLink="/authentication">Sign in</a>
+    </p>
+
+    <p class="register__info"><span>*</span> All fields are required</p>
+
+    <form class="auth-form" [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+      <!--      firstName control-->
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('firstName').touched && form.get('firstName').invalid}"
+      >
+        <div>
+          <label for="firstName">First name</label>
+          <div
+            *ngIf="form.get('firstName').touched && form.get('firstName').invalid"
+            class="validation"
+          >
+            <small *ngIf="form.get('firstName').errors.required">
+              Field is required
+            </small>
+            <small *ngIf="form.get('firstName').errors.maxlength">
+              Please enter less than 255 characters
+            </small>
+          </div>
+        </div>
+        <input id="firstName" type="text" formControlName="firstName">
+      </div>
+      <!--      END of firstName control-->
+
+      <!--      lastName control-->
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('lastName').touched && form.get('lastName').invalid}"
+      >
+        <div>
+          <label for="lastName">Last name</label>
+          <div
+            *ngIf="form.get('lastName').touched && form.get('lastName').invalid"
+            class="validation"
+          >
+            <small *ngIf="form.get('lastName').errors.required">
+              Field is required
+            </small>
+            <small *ngIf="form.get('lastName').errors.maxlength">
+              Please enter less than 255 characters
+            </small>
+          </div>
+        </div>
+        <input id="lastName" type="text" formControlName="lastName">
+      </div>
+      <!--      END of lastName control-->
+
+      <!--      birthDate control-->
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('birthDate').touched && form.get('birthDate').invalid}"
+      >
+        <div>
+          <label for="birthDate">Date of birth</label>
+          <div
+            *ngIf="form.get('birthDate').touched && form.get('birthDate').invalid"
+            class="validation"
+          >
+            <small *ngIf="form.get('birthDate').errors.required">
+              Please enter a valid date
+            </small>
+            <small *ngIf="form.get('birthDate').errors.matDatepickerMin || form.get('birthDate').errors.matDatepickerMax">
+              You are out of a birth range
+            </small>
+          </div>
+        </div>
+        <input
+          [matDatepicker]="picker"
+          id="birthDate"
+          type="text"
+          formControlName="birthDate"
+          placeholder="MM/DD/YYYY"
+          class="date-input"
+          [min]="minDate"
+          [max]="maxDate"
+          maxlength="10"
+          (keyup)="dateMask($event)"
+        >
+        <i class="hide-control">
+          <img
+            (click)="picker.open()"
+            src="assets/images/calendar.svg"
+            alt="choose date"
+          >
+        </i>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <!--      END of birthDate control-->
+
+      <!--      phone control-->
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('phone').touched && form.get('phone').invalid}"
+      >
+        <div>
+          <label for="phone">Phone</label>
+          <div
+            *ngIf="form.get('phone').touched && form.get('phone').invalid"
+            class="validation"
+          >
+            <small *ngIf="form.get('phone').errors.required">
+              Field is required
+            </small>
+            <small *ngIf="form.get('phone').errors.minlength">
+              Phone number must consist of
+              {{form.get('phone').errors.minlength.requiredLength}}
+              characters
+            </small>
+          </div>
+        </div>
+        <div class="inputs-row">
+          <input id="phonePrefix" type="text" readonly value="{{phonePrefix}}">
+          <input
+            id="phone"
+            type="tel"
+            formControlName="phone"
+            mask="000-000-0000"
+            placeholder="000-000-0000"
+          >
+        </div>
+      </div>
+      <!--      END of phone control-->
+
+      <!--      email control-->
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+      >
+        <div>
+          <label for="email">Email</label>
+          <div
+            *ngIf="form.get('email').touched && form.get('email').invalid"
+            class="validation"
+          >
+            <small *ngIf="form.get('email').errors.required">
+              Field is required
+            </small>
+            <small *ngIf="form.get('email').errors.pattern && !form.get('email').errors.maxlength">
+              Please enter a valid email address
+            </small>
+            <small *ngIf="form.get('email').errors.maxlength">
+              Please enter less than 255 characters
+            </small>
+          </div>
+        </div>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="example@email.com"
+        >
+      </div>
+      <!--      END of email control-->
+
+      <!--      password control-->
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+      >
+        <div>
+          <label for="password">Password</label>
+          <div
+            *ngIf="form.get('password').touched && form.get('password').invalid"
+            class="validation"
+          >
+            <small *ngIf="form.get('password').errors.required">
+              Field is required
+            </small>
+            <small *ngIf="form.get('password').errors.minlength">
+              Password must be at least
+              {{form.get('password').errors.minlength.requiredLength}}
+              characters
+            </small>
+            <small *ngIf="form.get('password').errors.maxlength">
+              Please enter less than 255 characters
+            </small>
+          </div>
+        </div>
+        <input
+          id="password"
+          [type]="hidePassword ? 'password' : 'text'"
+          formControlName="password"
+        >
+        <i class="hide-control">
+          <img
+            (click)="hidePassword = !hidePassword"
+            [src]="hidePassword
+              ? 'assets/images/eye.svg'
+              : 'assets/images/eye-active.svg'"
+            alt="hide/show password"
+          >
+        </i>
+      </div>
+      <!--      END of password control-->
+
+      <!--      confirmPassword control-->
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('confirmPassword').touched && form.get('confirmPassword').invalid}"
+      >
+        <div>
+          <label for="confirmPassword">Confirm password</label>
+          <div
+            *ngIf="form.get('confirmPassword').touched && form.get('confirmPassword').invalid"
+            class="validation"
+          >
+            <small *ngIf="form.get('confirmPassword').errors.required">
+              Field is required
+            </small>
+            <small *ngIf="form.get('confirmPassword').errors.minlength">
+              Password must be at least
+              {{form.get('confirmPassword').errors.minlength.requiredLength}}
+              characters
+            </small>
+            <small *ngIf="form.get('confirmPassword').errors.maxlength">
+              Please enter less than 255 characters
+            </small>
+          </div>
+        </div>
+        <input
+          id="confirmPassword"
+          [type]="hideConfirmPassword ? 'password' : 'text'"
+          formControlName="confirmPassword"
+        >
+        <i class="hide-control">
+          <img
+            (click)="hideConfirmPassword = !hideConfirmPassword"
+            [src]="hideConfirmPassword
+              ? 'assets/images/eye.svg'
+              : 'assets/images/eye-active.svg'"
+            alt="hide/show password"
+          >
+        </i>
+      </div>
+      <!--      END of confirmPassword control-->
+
+      <button
+        class="primary-button"
+        mat-flat-button
+        type="submit"
+        [disabled]="form.invalid || form.disabled"
+        [ngSwitch]="isLoading"
+      >
+        <span *ngSwitchCase="false">Create account</span>
+        <app-progress-spinner *ngSwitchCase="true"></app-progress-spinner>
+      </button>
+    </form>
+  </div>
+</section>

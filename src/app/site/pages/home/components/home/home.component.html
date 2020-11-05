@@ -1,0 +1,68 @@
+<app-tabs-window>
+
+  <!--  ng-content: CONTENT-->
+  <section content class="home" [ngSwitch]="!!(myInfo$ | async)">
+
+    <app-progress-bar *ngSwitchCase="false"></app-progress-bar>
+
+    <div class="home__body" *ngSwitchCase="true">
+
+      <!--      Feed component-->
+      <app-feed
+        *ngIf="(windowInnerWidth$ | async) > 991"
+        [myInfo]="myInfo$ | async"
+      ></app-feed>
+
+      <!--      Avatar-container component-->
+      <app-avatar-container
+        *ngIf="(windowInnerWidth$ | async) > 991 || (currentSheet$ | async) === 'avatar'"
+        [myInfo]="myInfo$ | async"
+        [connHL]="connHL$ | async"
+        [ageomes]="ageomes$ | async"
+      ></app-avatar-container>
+
+      <!--      Connections component-->
+      <app-connections
+        *ngIf="(windowInnerWidth$ | async) > 991 || (currentSheet$ | async) === 'connections'"
+        [connHL]="connHL$ | async"
+        (lpcConnect)="onLpcDataConnect($event)"
+      ></app-connections>
+
+      <!--     Chatbot button     -->
+      <button
+        *ngIf="(windowInnerWidth$ | async) > 767"
+        class="btn-chat"
+        matBadge=""
+        matBadgeOverlap="false"
+        matBadgeColor="warn"
+        [matBadgeHidden]="false"
+        (click)="openChatbotWindow()"
+        aria-label="Chat"
+      >
+        <img src="assets/images/chat-button.svg" alt="Chat">
+      </button>
+
+      <!--     Chatbot     -->
+      <app-chatbot
+        *ngIf="(windowInnerWidth$ | async) <= 767 && (currentSheet$ | async) === 'chat'"
+      ></app-chatbot>
+    </div>
+  </section>
+
+  <!--  ng-content: TABS-->
+  <div tabs class="home__tabs" [class.tabs-hide]="!(tabsIsVisible$ | async)">
+    <app-tab
+      (click)="setCurrentSheet('avatar')"
+      [src]="'assets/images/tabs/' + ((currentSheet$ | async) === 'avatar' ? 'home-avatar-active.svg' : 'home-avatar.svg')"
+    ></app-tab>
+    <app-tab
+      (click)="setCurrentSheet('connections')"
+      [src]="'assets/images/tabs/' + ((currentSheet$ | async) === 'connections' ? 'home-configure-active.svg' : 'home-configure.svg')"
+    ></app-tab>
+    <app-tab
+      *ngIf="(windowInnerWidth$ | async) <= 767"
+      (click)="setCurrentSheet('chat')"
+      [src]="'assets/images/tabs/' + ((currentSheet$ | async) === 'chat' ? 'home-chat-active.svg' : 'home-chat.svg')"
+    ></app-tab>
+  </div>
+</app-tabs-window>

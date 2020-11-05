@@ -1,0 +1,40 @@
+@import "src/assets/scss/index";
+
+.auth {
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.logo-mobile {
+  display: none;
+}
+
+@media screen and (max-width: $sm) {
+  .auth {
+
+    &__header {
+      padding: 30px 0;
+    }
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .logo-mobile {
+    display: block;
+  }
+}

@@ -1,0 +1,53 @@
+<section class="services">
+  <h3 class="services__title">Services</h3>
+  <div class="services__body">
+
+    <!--    Have to reconstruct into single components and use "let a of b"-->
+    <div class="services__card">
+      <div class="services__card-img-container">
+        <img src="assets/images/nutritional.svg" alt="Nutritional" class="services__card-img">
+        <h4 class="services__card-title-mobile">Nutritional Consultation</h4>
+      </div>
+      <div class="services__card-content">
+        <h4 class="services__card-title">Nutritional Consultation</h4>
+        <p class="services__card-text">
+          Active lifestyle but not showing the results? It could be your nutrition. Spend 20 minutes with our Nutritionist to assess what may be blocking your health goals.
+        </p>
+        <div class="services__card-action">
+          <button disabled class="primary-button" mat-flat-button type="button">Schedule Appt</button>
+          <button
+            class="primary-button"
+            mat-flat-button
+            type="button"
+            [disabled]="myInfo === null"
+            (click)="onQConsult()"
+          >Connect</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="services__card">
+      <div class="services__card-img-container">
+        <img src="assets/images/chiropractic.svg" alt="Nutritional" class="services__card-img">
+        <h4 class="services__card-title-mobile">Chiropractic Evaluation</h4>
+      </div>
+      <div class="services__card-content">
+        <h4 class="services__card-title">Chiropractic Evaluation</h4>
+        <p class="services__card-text">
+          Our doctors employ a wide variety of chiropractic techniques. You’ll benefit from customized chiropractic treatments created for your specific needs and tolerances. You’ll get the adjustments you need based on the most current medical research and biomechanical techniques.
+        </p>
+        <div class="services__card-action">
+          <button disabled class="primary-button" mat-flat-button type="button">Schedule Appt</button>
+          <button
+            class="primary-button"
+            mat-flat-button
+            type="button"
+            [disabled]="myInfo === null"
+            (click)="onQConsult()"
+          >Connect</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

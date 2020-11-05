@@ -1,0 +1,23 @@
+<div class="protection">
+  <h3 class="protection__title">MyHealth
+    <span class="protection__label">under development</span>
+  </h3>
+
+  <form class="protection__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Protection key</mat-label>
+      <input matInput type="password" formControlName="key">
+      <mat-error *ngIf="form.get('key').hasError('required')">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button
+      [disabled]="form.invalid"
+      class="protection__btn"
+      mat-stroked-button
+      type="submit"
+    >Use key</button>
+  </form>
+</div>
+
+

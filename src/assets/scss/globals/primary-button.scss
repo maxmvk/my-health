@@ -1,0 +1,27 @@
+@import "../mixins/font.scss";
+@import "../var/colors.scss";
+@import "../var/screen-sizes";
+
+.primary-button {
+  @include font-primary-normal-s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-width: 120px;
+  max-width: 160px;
+  padding: 0 20px;
+  border-radius: 5px;
+  background-color: $accent-color;
+  color: $white-color;
+
+  .mat-button-wrapper {
+    span {
+      vertical-align: baseline;
+    }
+  }
+
+  @media (max-width: $sm) {
+    height: 36px;
+  }
+}

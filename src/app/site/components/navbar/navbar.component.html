@@ -1,0 +1,29 @@
+<div class="nav">
+  <div class="nav__header">
+    <app-notification-button [color]="'white'"></app-notification-button>
+    <app-user-profile [color]="'white'"></app-user-profile>
+    <app-logout-button [color]="'white'"></app-logout-button>
+  </div>
+
+  <div class="nav__body">
+    <div class="nav__top">
+      <div class="nav__links">
+        <app-navbar-link
+          (click)="onChooseLink()"
+          *ngFor="let route of routes.topList"
+          [route]="route"
+        ></app-navbar-link>
+      </div>
+    </div>
+
+    <div class="nav__bottom">
+      <div class="nav__links">
+        <app-navbar-link
+          (click)="onChooseLink()"
+          *ngFor="let route of routes.bottomList"
+          [route]="route"
+        ></app-navbar-link>
+      </div>
+    </div>
+  </div>
+</div>

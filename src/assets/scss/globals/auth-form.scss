@@ -1,0 +1,9 @@
+@import "../var";
+
+.auth-form {
+  width: 340px;
+
+  @media (max-width: $sm) {
+    width: 300px;
+  }
+}

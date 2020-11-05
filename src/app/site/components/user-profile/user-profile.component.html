@@ -1,0 +1,16 @@
+<div class="user-profile">
+  <img
+    class="user-profile__found avatar"
+    *ngIf="(myInfo$ | async)?.avatar; else profileImageNotFound"
+    [src]="(myInfo$ | async)?.avatar"
+  >
+  <ng-template #profileImageNotFound>
+    <div class="user-profile__not-found avatar">
+      <img src="assets/images/avatar.svg" alt="Avatar">
+    </div>
+  </ng-template>
+
+  <span class="user-profile__full-name" #userFullName>
+    {{(((myInfo$ | async)?.firstName || '') + ' ' + ((myInfo$ | async)?.lastName || '')) | textTruncate}}
+  </span>
+</div>

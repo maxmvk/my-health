@@ -1,0 +1,25 @@
+<div class="header">
+  <button (click)="onToggleMenu()" class="header__menu-trigger" mat-icon-button type="button">
+    <div class="header__menu-icon">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </button>
+
+  <img class="header__logo" src="assets/images/logo.png" alt="Logo">
+
+  <div class="header__status">
+    <div class="header__notification-container">
+      <app-notification-button></app-notification-button>
+    </div>
+
+    <div class="header__profile">
+      <app-user-profile></app-user-profile>
+    </div>
+
+    <div class="header__logout">
+      <app-logout-button></app-logout-button>
+    </div>
+  </div>
+</div>

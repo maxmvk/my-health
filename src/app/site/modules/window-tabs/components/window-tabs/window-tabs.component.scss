@@ -1,0 +1,30 @@
+@import "src/assets/scss";
+
+.tabs-window {
+  &__content {
+    // 60px - header
+    min-height: calc(100vh - 60px);
+  }
+
+  &__tabs {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    // 100px - sidebar
+    width: calc(100% - 100px);
+  }
+}
+
+@include max-w($md) {
+  .tabs-window {
+
+    &__content {
+      min-height: calc(100vh - 36px);
+    }
+
+    &__tabs {
+      width: 100%;
+    }
+  }
+}

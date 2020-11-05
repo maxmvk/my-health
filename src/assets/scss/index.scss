@@ -1,0 +1,18 @@
+@import "globals/index.scss";
+@import "mixins/index.scss";
+@import "var/index.scss";
+
+// Remove padding from mat-list-item
+.mat-list-base .mat-list-item .mat-list-item-content {
+  padding: 0 !important
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}

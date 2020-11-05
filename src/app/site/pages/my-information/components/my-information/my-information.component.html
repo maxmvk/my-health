@@ -1,0 +1,35 @@
+<app-tabs-window>
+
+  <!--  ng-content: CONTENT-->
+  <section content class="my-information" [ngSwitch]="!!(myInfo$ | async)">
+
+    <app-progress-bar *ngSwitchCase="false"></app-progress-bar>
+
+    <div class="my-information__body" *ngSwitchCase="true">
+
+      <!--      Avatar-container component-->
+      <app-avatar-container
+        *ngIf="(windowInnerWidth$ | async) > 991 || (currentSheet$ | async) === 'avatar'"
+        [myInfo]="myInfo$ | async"
+      ></app-avatar-container>
+
+      <!--      Form component-->
+      <app-form
+        *ngIf="(windowInnerWidth$ | async) > 991 || (currentSheet$ | async) === 'form'"
+        [myInfo]="myInfo$ | async"
+      ></app-form>
+    </div>
+  </section>
+
+  <!--  ng-content: TABS-->
+  <div tabs class="my-information__tabs" [class.tabs-hide]="!(tabsIsVisible$ | async)">
+    <app-tab
+      (click)="setCurrentSheet('form')"
+      [src]="'assets/images/tabs/' + ((currentSheet$ | async) === 'form' ? 'my-information-form-active.svg' : 'my-information-form.svg')"
+    ></app-tab>
+    <app-tab
+      (click)="setCurrentSheet('avatar')"
+      [src]="'assets/images/tabs/' + ((currentSheet$ | async) === 'avatar' ? 'my-information-avatar-active.svg' : 'my-information-avatar.svg')"
+    ></app-tab>
+  </div>
+</app-tabs-window>

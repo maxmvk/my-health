@@ -1,0 +1,50 @@
+@import "src/assets/scss";
+
+.register {
+  @extend %auth-section;
+
+  &__container {
+    @extend %auth-container;
+  }
+
+  &__title {
+    @extend %auth-section-title;
+  }
+
+  &__subtitle {
+    @extend %auth-subtitle;
+  }
+
+  &__info {
+    @include font-primary-normal-s;
+    margin: 0 0 20px;
+    color: $black-color;
+
+    span {
+      color: #D60000;
+    }
+  }
+}
+
+.primary-button {
+  @extend %auth-primary-button;
+}
+
+@include max-w($sm) {
+  .register {
+    padding: 90px 0 64px;
+
+    &__container {
+      border: none;
+      padding: 0 10px;
+    }
+
+    &__title {
+      margin-bottom: 24px;
+    }
+
+    &__subtitle {
+      margin-bottom: 24px;
+    }
+  }
+}

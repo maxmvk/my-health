@@ -1,0 +1,56 @@
+@import "src/assets/scss";
+
+.user-profile {
+  @include font-primary-normal-s;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__found {
+    background: $white-color;
+    object-fit: cover;
+  }
+
+  &__not-found {
+    background: $light-grey-color;
+    overflow: hidden;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__full-name {
+    padding-left: 10px;
+  }
+}
+
+@include max-w($md) {
+  .user-profile {
+    .avatar {
+      width: 22px;
+      height: 22px;
+    }
+
+    &__not-found {
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    &__full-name {
+      font-size: 10px;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@import "src/assets/scss";
+
+.my-information {
+
+  &__body {
+    display: grid;
+    // 324px - avatar width: (540px / 5 * 3)
+    grid-template-columns: minmax(324px, 1fr) 2fr;
+  }
+
+  &__tabs {
+    border-top: 1px $light-grey-color solid;
+    height: 44px;
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    background-color: $white-color;
+    transition: 0.2s transform ease-in-out;
+
+    &.tabs-hide {
+      transform: translateY(100%);
+    }
+  }
+}
+
+@include max-w($lg) {
+  .my-information {
+    &__body {
+      display: block;
+    }
+
+    &__tabs {
+      display: grid;
+    }
+  }
+}
+
+

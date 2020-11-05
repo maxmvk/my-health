@@ -1,0 +1,9 @@
+<div class="avatar-container">
+  <h3 class="avatar-container__username">
+    {{((myInfoProps.firstName || '') + ' ' + (myInfoProps.lastName || '')) | textTruncate}}
+  </h3>
+
+  <div class="avatar-container__avatar">
+    <app-avatar></app-avatar>
+  </div>
+</div>

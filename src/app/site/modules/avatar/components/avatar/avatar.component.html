@@ -1,0 +1,32 @@
+<div class="avatar" [ngSwitch]="(avatarState$ | async)">
+
+  <!--  LOADING-->
+  <app-progress-spinner
+    *ngSwitchCase="'loading'"
+    [diameter]="30"
+    [color]="'#f24a0b'"
+  ></app-progress-spinner>
+
+  <!--  EMPTY-->
+  <img
+    class="avatar__img"
+    *ngSwitchCase="'empty'"
+    src="assets/images/xray-without-alpha.png"
+    alt="Avatar"
+  >
+
+  <!--  Avatar-model component-->
+  <app-avatar-model
+    *ngSwitchCase="'avatar'"
+    [avatarModel]="(avatarModel$ | async)"
+    (isRendering)="setIsRendering($event)"
+  ></app-avatar-model>
+
+  <!--  AVATAR RENDERING-->
+  <p
+    class="avatar__rendering"
+    *ngIf="isRendering"
+  >Please wait, the avatar is loading...</p>
+</div>
+
+

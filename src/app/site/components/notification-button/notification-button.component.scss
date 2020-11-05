@@ -1,0 +1,41 @@
+@import "src/assets/scss";
+
+.notification {
+  &__body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__badge {
+    position: absolute;
+    top: 0;
+    right: 3px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: $accent-color;
+  }
+}
+
+@include max-w($md) {
+  button {
+    height: 30px;
+    width: 30px;
+  }
+
+  .notification {
+    &__body {
+      img {
+        height: 16px;
+      }
+    }
+
+    &__badge {
+      width: 5px;
+      height: 5px;
+      right: 6px;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import "src/assets/scss/index";
+
+.authentication {
+  @extend %auth-section;
+
+  &__container {
+    @extend %auth-container;
+  }
+
+  &__title {
+    @extend %auth-section-title;
+  }
+
+  &__subtitle {
+    @extend %auth-subtitle;
+  }
+
+  &__actions {
+    // 16px - form-field margin-bottom
+    margin-top: calc(16px + 10px);
+    @include font-primary-normal-s;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      color: $violet-blue-color;
+    }
+  }
+}
+
+.primary-button {
+  @extend %auth-primary-button;
+}
+
+@include max-w($sm) {
+  .authentication {
+    padding: 90px 0 64px;
+
+    &__container {
+      border: none;
+      padding: 0 10px;
+    }
+
+    &__title {
+      margin-bottom: 24px;
+    }
+
+    &__subtitle {
+      margin-bottom: 24px;
+    }
+  }
+}
+

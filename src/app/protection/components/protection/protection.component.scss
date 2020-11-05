@@ -1,0 +1,66 @@
+@import "src/assets/scss";
+
+.protection {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    position: relative;
+    font-weight: 800;
+    font-size: 48px;
+    color: $accent-color;
+    margin-bottom: 70px;
+  }
+
+  &__label {
+    @include font-primary-bold-xs;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    color: $violet-blue-color;
+  }
+
+  &__form {
+    display: block;
+    min-width: 150px;
+    max-width: 270px;
+    width: 100%;
+  }
+
+  &__btn {
+    margin-top: 10px;
+    display: block;
+  }
+}
+
+::ng-deep .mat-form-field-underline {
+  display: block !important;
+}
+
+/* Change label color on focused */
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: $violet-blue-color !important;
+}
+
+/* underline border color on focused */
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+  background-color: $violet-blue-color !important;
+}
+
+/* Sets the underline to warn-color if touched and invalid */
+::ng-deep .mat-form-field.ng-touched.ng-invalid .mat-form-field-underline .mat-form-field-ripple {
+  background-color: $danger-color;
+}
+
+/* Sets the label to warn-color if touched and invalid */
+::ng-deep .mat-form-field.ng-touched.ng-invalid .mat-form-field-label {
+  color: $danger-color;
+}
+
+/* Sets the error to red warn-color */
+::ng-deep .mat-error {
+  color: $danger-color;
+}

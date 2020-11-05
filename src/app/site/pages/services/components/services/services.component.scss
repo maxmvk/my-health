@@ -1,0 +1,116 @@
+@import "src/assets/scss";
+
+.services {
+  min-height: calc(100vh - 60px);
+
+  &__title {
+    @include font-primary-normal-l;
+    padding: 0 30px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    color: $black-color;
+    border-bottom: 1px $light-grey-color solid;
+    margin: 0;
+  }
+
+  &__card {
+    padding: 28px 21px 40px 29px;
+    display: flex;
+    border-bottom: 1px $light-grey-color solid;
+    border-right: 1px $light-grey-color solid;
+    align-items: flex-start;
+
+    // when we get second column, need to use grid with fr params
+    width: 611px;
+  }
+
+  &__card-img {
+    display: block;
+    margin-right: 20px;
+  }
+
+  &__card-title-mobile {
+    display: none;
+  }
+
+  &__card-title {
+    margin-bottom: 16px;
+    @include font-primary-semi-bold-m;
+  }
+
+  &__card-text {
+    margin-bottom: 24px;
+  }
+
+  &__card-action {
+    display: flex;
+  }
+
+  .primary-button {
+    width: 130px;
+
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+
+@include max-w($md) {
+  .services {
+    // 36px - header
+    min-height: calc(100vh - 36px);
+
+    &__card {
+      border-right: none;
+      width: 100%;
+    }
+  }
+}
+
+@include max-w($sm) {
+  .services {
+    &__title {
+      @include font-primary-normal-m;
+      padding: 0 10px;
+      height: 53px;
+    }
+
+    &__card {
+      padding: 10px 10px 31px 10px;
+      flex-direction: column;
+      border-right: none;
+      width: 100%;
+    }
+
+    &__card-img-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    &__card-img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    &__card-title-mobile {
+      @include font-primary-semi-bold-s;
+      display: block;
+      margin: 0;
+    }
+
+    &__card-title {
+      display: none;
+    }
+
+    &__card-text {
+      margin-bottom: 20px;
+    }
+
+    &__card-action {
+      justify-content: center;
+    }
+  }
+}

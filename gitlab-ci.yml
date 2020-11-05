@@ -1,0 +1,38 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  image: node
+  script:
+    - apt update
+    - npm install -g @angular/cli
+    - npm install
+    - ng build --prod
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - test_cicd
+
+deploy:
+  stage: deploy
+  dependencies:
+    - build
+  before_script:
+    - apt update -qq
+    - apt install -qq git
+    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
+
+  script:
+    - scp -r dist/* ubuntu@$DEPLOY_SERVER:/home/ubuntu/test_cicd
+  environment:
+    name: production
+  only:
+    - test_cicd

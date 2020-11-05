@@ -1,0 +1,41 @@
+<div class="chatbot">
+
+    <div class="chat-header">
+        <div class="icon-chatbot">
+            <img src="assets/images/logo-bot.png" alt="Chat bot">
+        </div>
+        <p>Chat bot</p>
+        <div class="icon-close" (click)="onClose()">
+            <img src="assets/images/close.svg" alt="Close" >
+        </div>
+    </div>
+
+    <div class="chat-content" #scrollframe>
+        <div class="date-messages">
+            <div class="date">{{currentDate | date: 'MMM d, h:mm a'}}</div>
+            <div *ngFor="let message of chatbotService.messages" class="message" #item>
+                <div [class]="message.sender" [innerHTML]="message.content"></div>
+                <div class="card" *ngIf="message.attachments">
+                    <img *ngIf="message.attachments.imageUrl" [src]="message.attachments.imageUrl" alt="">
+                    <p>{{message.attachments.title}}</p>
+                    <p>{{message.attachments.subTitle}}</p>
+                    <button
+                        class="primary-button"
+                        mat-flat-button
+                        *ngFor="let button of message.attachments.buttons"
+                        (click)="onPostLexText(button.value)">
+                        {{button.text}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="input-message">
+        <div class="form-control">
+            <input type="text" placeholder="Ask your question…" [(ngModel)]="userInput" (keyup.enter)=onPostLexText(userInput)>
+            <div class="icon-send" (click)="onPostLexText(userInput)">
+                <img src="assets/images/send.svg" alt="Send">
+            </div>
+        </div>
+    </div>
+</div>

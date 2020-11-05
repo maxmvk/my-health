@@ -1,0 +1,16 @@
+overwrite: true
+schema: ${URI}
+documents: "src/**/all-operations.graphql"
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-apollo-angular"
+    config:
+      declarationKind: "interface"
+      namingConventions:
+        transformUnderscore: true
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

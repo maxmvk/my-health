@@ -1,0 +1,35 @@
+  <div class="ageome"
+   [ngClass]="{
+    'side-left': sideProps === 'left',
+    'side-right': sideProps === 'right',
+    'side-bottom': sideProps === 'bottom'
+  }"
+>
+  <div class="ageome__bubble" [class.selected-bubble]="selectedTooltip === tooltipName.personal">
+    <div
+      class="ageome__bubble-content"
+      matRipple
+      (click)="openTooltip(tooltipName.personal)"
+      [ngSwitch]="!!age"
+    >
+      <ng-template [ngSwitchCase]="true">
+        <span>{{age}}</span>
+        <small>Years</small>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </ng-template>
+
+      <ng-template [ngSwitchCase]="false">
+        <span class="ageome__na">N/A</span>
+      </ng-template>
+    </div>
+  </div>
+
+  <div
+    class="ageome__label"
+    (click)="openTooltip(tooltipName.generic)"
+    [class.selected-title]="selectedTooltip === tooltipName.generic"
+  >
+    <h5>{{title}}</h5>
+    <mat-icon>arrow_drop_down</mat-icon>
+  </div>
+</div>

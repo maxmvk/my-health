@@ -1,0 +1,22 @@
+<div class="tooltip">
+  <img class="tooltip__close" src="assets/images/close.svg" alt="Close" (click)="onClose()">
+
+  <h3 class="tooltip__title">{{tooltipInfo?.title}}</h3>
+  <p class="tooltip__type">{{tooltipInfo?.type}}</p>
+  <div class="tooltip__info">
+    <div class="tooltip__container">
+      <h4 class="tooltip__subtitle">{{tooltipInfo?.subtitle1}}</h4>
+      <ul class="tooltip__list">
+        <li *ngFor="let item of tooltipInfo?.info1">{{item}}</li>
+      </ul>
+    </div>
+    <div class="tooltip__container">
+      <h4 class="tooltip__subtitle">{{tooltipInfo?.subtitle2}}</h4>
+      <ul class="tooltip__list">
+        <li *ngFor="let item of tooltipInfo?.info2">{{item}}</li>
+      </ul>
+    </div>
+  </div>
+  <app-chart [chartData]="chartData" [chartLabels]="chartLabels" *ngIf="chartLabels.length"></app-chart>
+</div>
+

@@ -1,0 +1,66 @@
+@import "src/assets/scss";
+
+.section {
+  min-height: 100vh;
+  padding: 120px 0 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.background {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: calc(120px + 40px);
+  bottom: 20px;
+  background: url('src/assets/images/xray.png') center / contain no-repeat;
+}
+
+.title {
+  @include font-primary-semi-bold-l;
+  color: $black-color;
+  text-align: center;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 370px;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.primary-button {
+  flex: 0 1 50%;
+  margin: 0 10px;
+}
+
+@include max-w($sm) {
+  .section {
+    padding: 90px 0 30px;
+  }
+
+  .background {
+    bottom: 41px;
+    top: calc(90px + 50px);
+  }
+
+  .title {
+    @include font-primary-semi-bold-m;
+  }
+
+  .buttons-container {
+    width: 170px;
+    flex-direction: column;
+    margin: 50px auto 0;
+  }
+
+  .primary-button {
+    margin: 12px 0;
+    width: 100%;
+    max-width: 170px;
+  }
+}

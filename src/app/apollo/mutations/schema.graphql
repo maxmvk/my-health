@@ -1,0 +1,95 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Mutation {
+  "Send email to user to verify registered email"
+  changeHLStatusConn(status: Boolean): HL
+  "Delete current avatar if an image exists"
+  deleteUserAvatar: String!
+  "Update data about a user."
+  myInfo(dateOfBirth: Date, email: String, firstName: String, gender: String, height: Int, lastName: String, phoneNumber: String, silhouetteId: String, skip: Boolean, weight: Int): MyInfo
+  "Generate a new pair of tokens: accessToken and refreshToken. Requires refreshToken in request header."
+  refreshToken: UserPayload!
+  "Send email with token, accepts email as input, in response returns random token with lifetime 1h"
+  remindPassword(email: String): String
+  "Send email to user to verify registered email"
+  sendVerifyEmailLink(email: String): String
+  "check recovery token"
+  updatePassword(newPass: String, token: String): UserPayload!
+  "Upload avatar from file. Returns image url."
+  uploadUserAvatar(file: Upload!): String!
+  "Login by email and password."
+  userSignIn(email: String, password: String): SignIn!
+  "SignUp by user data."
+  userSignUp(dateOfBirthday: Date!, email: String!, firstName: String!, lastName: String!, password: String!, phoneNumber: String!): String
+}
+
+type MyInfo {
+  avatar: String
+  bodyType: String
+  dateOfBirth: Date
+  email: String
+  eyeColor: String
+  firstName: String
+  firstTimePassword: String
+  gender: String
+  hairColor: String
+  height: Int
+  lastName: String
+  phoneNumber: String
+  silhouetteId: String
+  silhouetteUserId: String
+  skinColor: String
+  weight: Int
+}
+
+type Query {
+  "Returns all my info"
+  getHlStatus: HL
+  "Returns all my info"
+  myInfo: MyInfo
+}
+
+type SignIn {
+  accessToken: String!
+  firstTime: Boolean!
+  refreshToken: String!
+}
+
+type Subscription {
+  "Subscrition for all updates in healthlab firebase"
+  healthlabSubscription: info
+}
+
+type User {
+  email: String
+  firstName: String
+  id: ID!
+  lastName: String
+  password: String
+  refreshToken: String
+}
+
+type UserPayload {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type info {
+  ageomes: JSON
+  user: String
+}
+
+
+scalar Upload
+
+scalar Date
+
+scalar JSON
+
+scalar HL

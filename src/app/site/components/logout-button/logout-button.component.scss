@@ -1,0 +1,18 @@
+@import "src/assets/scss";
+
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@include max-w($md) {
+  .logout {
+    height: 30px;
+    width: 30px;
+
+    &__img {
+      max-width: 16px;
+    }
+  }
+}

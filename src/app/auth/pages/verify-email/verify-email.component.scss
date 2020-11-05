@@ -1,0 +1,45 @@
+@import "src/assets/scss";
+
+.verify-email {
+  @extend %auth-section;
+
+  &__container {
+    @extend %auth-container;
+    width: 400px;
+  }
+
+  &__title {
+    @extend %auth-section-title;
+  }
+
+  &__message {
+    max-width: 270px;
+    text-align: center;
+    margin: 0 auto;
+    color: $black-color;
+  }
+}
+
+.primary-button {
+  @extend %auth-primary-button;
+}
+
+@include max-w($sm) {
+  .verify-email {
+    padding: 90px 0 64px;
+
+    &__container {
+      border: none;
+      padding: 0 10px;
+      width: 300px;
+    }
+
+    &__title {
+      margin-bottom: 24px;
+    }
+
+    &__message {
+      width: 230px;
+    }
+  }
+}

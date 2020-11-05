@@ -1,0 +1,23 @@
+@import "src/assets/scss";
+
+.avatar-container {
+  &__username {
+    padding-top: 30px;
+    color: rgba($black-color, 0.65);
+    @include font-primary-normal-l;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__avatar {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
+}
+
+@include max-w($lg) {
+  .avatar-container {
+    padding-bottom: 43px;
+  }
+}

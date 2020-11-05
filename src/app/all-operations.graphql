@@ -1,0 +1,128 @@
+# this is an auto generated file. This will be overwritten
+query MyInfo {
+  myInfo {
+    avatar
+    bodyType
+    dateOfBirth
+    email
+    eyeColor
+    firstName
+    gender
+    hairColor
+    height
+    lastName
+    phoneNumber
+    silhouetteId
+    silhouetteUserId
+    skinColor
+    weight
+  }
+}
+mutation ChangeHlStatusConn($status: Boolean) {
+  changeHLStatusConn(status: $status)
+}
+mutation DeleteUserAvatar {
+  deleteUserAvatar
+}
+mutation MyInfo(
+  $bodyType: String
+  $dateOfBirth: Date
+  $email: String
+  $eyeColor: String
+  $firstName: String
+  $gender: String
+  $hairColor: String
+  $height: Int
+  $lastName: String
+  $phoneNumber: String
+  $silhouetteId: String
+  $silhouetteUserId: String
+  $skinColor: String
+  $skip: Boolean
+  $weight: Int
+) {
+  myInfo(
+    bodyType: $bodyType
+    dateOfBirth: $dateOfBirth
+    email: $email
+    eyeColor: $eyeColor
+    firstName: $firstName
+    gender: $gender
+    hairColor: $hairColor
+    height: $height
+    lastName: $lastName
+    phoneNumber: $phoneNumber
+    silhouetteId: $silhouetteId
+    silhouetteUserId: $silhouetteUserId
+    skinColor: $skinColor
+    skip: $skip
+    weight: $weight
+  ) {
+    avatar
+    bodyType
+    dateOfBirth
+    email
+    eyeColor
+    firstName
+    gender
+    hairColor
+    height
+    lastName
+    phoneNumber
+    silhouetteId
+    silhouetteUserId
+    skinColor
+    weight
+  }
+}
+mutation RefreshToken {
+  refreshToken {
+    accessToken
+    refreshToken
+  }
+}
+mutation RemindPassword($email: String) {
+  remindPassword(email: $email)
+}
+mutation SendVerifyEmailLink($email: String) {
+  sendVerifyEmailLink(email: $email)
+}
+mutation UpdatePassword($newPass: String, $token: String) {
+  updatePassword(newPass: $newPass, token: $token) {
+    accessToken
+    refreshToken
+  }
+}
+mutation UploadUserAvatar($file: Upload!) {
+  uploadUserAvatar(file: $file)
+}
+mutation UserSignIn($email: String, $password: String) {
+  userSignIn(email: $email, password: $password) {
+    accessToken
+    firstTime
+    refreshToken
+  }
+}
+mutation UserSignUp(
+  $dateOfBirthday: Date!
+  $email: String!
+  $firstName: String!
+  $lastName: String!
+  $password: String!
+  $phoneNumber: String!
+) {
+  userSignUp(
+    dateOfBirthday: $dateOfBirthday
+    email: $email
+    firstName: $firstName
+    lastName: $lastName
+    password: $password
+    phoneNumber: $phoneNumber
+  )
+}
+subscription HealthlabSubscription {
+  healthlabSubscription {
+    ageomes
+    user
+  }
+}

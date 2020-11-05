@@ -1,0 +1,311 @@
+<div class="form">
+  <h2 class="form__title">My Information</h2>
+  <form
+    class="form__form"
+    autocomplete="off"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
+
+    <div class="grid-container">
+      <div class="personal-info">
+        <h4 class="title">Personal information</h4>
+
+        <!--      firstName control-->
+        <div
+          class="form-control"
+          [ngClass]="{invalid: form.get('firstName').touched && form.get('firstName').invalid}"
+        >
+          <div>
+            <label for="firstName">First name</label>
+            <div
+              *ngIf="form.get('firstName').touched && form.get('firstName').invalid"
+              class="validation"
+            >
+              <small *ngIf="form.get('firstName').errors.required">
+                Field is required
+              </small>
+              <small *ngIf="form.get('firstName').errors.maxlength">
+                Please enter less than 255 characters
+              </small>
+            </div>
+          </div>
+          <input appOnFocusTabsController id="firstName" type="text" formControlName="firstName">
+        </div>
+        <!--      END of firstName control-->
+
+        <!--      lastName control-->
+        <div
+          class="form-control"
+          [ngClass]="{invalid: form.get('lastName').touched && form.get('lastName').invalid}"
+        >
+          <div>
+            <label for="lastName">Last name</label>
+            <div
+              *ngIf="form.get('lastName').touched && form.get('lastName').invalid"
+              class="validation"
+            >
+              <small *ngIf="form.get('lastName').errors.required">
+                Field is required
+              </small>
+              <small *ngIf="form.get('lastName').errors.maxlength">
+                Please enter less than 255 characters
+              </small>
+            </div>
+          </div>
+          <input appOnFocusTabsController id="lastName" type="text" formControlName="lastName">
+        </div>
+        <!--      END of lastName control-->
+
+        <!--      phone control-->
+        <div
+          class="form-control"
+          [ngClass]="{invalid: form.get('phoneNumber').touched && form.get('phoneNumber').invalid}"
+        >
+          <div>
+            <label for="phoneNumber">Phone</label>
+            <div
+              *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').invalid"
+              class="validation"
+            >
+              <small *ngIf="form.get('phoneNumber').errors.required">
+                Field is required
+              </small>
+              <small *ngIf="form.get('phoneNumber').errors.minlength">
+                Phone number must consist of
+                {{form.get('phoneNumber').errors.minlength.requiredLength}}
+                characters
+              </small>
+            </div>
+          </div>
+          <div class="inputs-row">
+            <input id="phonePrefix" type="text" readonly value="{{phonePrefix}}">
+            <input
+              appOnFocusTabsController
+              id="phoneNumber"
+              type="tel"
+              formControlName="phoneNumber"
+              mask="000-000-0000"
+              placeholder="000-000-0000"
+            >
+          </div>
+        </div>
+        <!--      END of phone control-->
+
+        <!--      email control-->
+<!--        <div-->
+<!--          class="form-control"-->
+<!--          [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"-->
+<!--        >-->
+<!--          <div>-->
+<!--            <label for="email">Email</label>-->
+<!--            <div-->
+<!--              *ngIf="form.get('email').touched && form.get('email').invalid"-->
+<!--              class="validation"-->
+<!--            >-->
+<!--              <small *ngIf="form.get('email').errors.required">-->
+<!--                Field is required-->
+<!--              </small>-->
+<!--              <small *ngIf="form.get('email').errors.pattern && !form.get('email').errors.maxlength">-->
+<!--                Please enter a valid email address-->
+<!--              </small>-->
+<!--              <small *ngIf="form.get('email').errors.maxlength">-->
+<!--                Please enter less than 255 characters-->
+<!--              </small>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <input-->
+<!--            id="email"-->
+<!--            type="email"-->
+<!--            formControlName="email"-->
+<!--            placeholder="example@email.com"-->
+<!--          >-->
+<!--        </div>-->
+
+        <div class="form-control">
+          <div>
+            <label for="email">Email</label>
+          </div>
+          <input
+            [value]="myInfoProps.email"
+            id="email"
+            type="email"
+            [disabled]="true"
+          >
+        </div>
+        <!--      END of email control-->
+
+        <!--      birthDate control-->
+        <div
+          class="form-control"
+          [ngClass]="{invalid: form.get('dateOfBirth').touched && form.get('dateOfBirth').invalid}"
+        >
+          <div>
+            <label for="dateOfBirth">Date of birth</label>
+            <div
+              *ngIf="form.get('dateOfBirth').touched && form.get('dateOfBirth').invalid"
+              class="validation"
+            >
+              <small *ngIf="form.get('dateOfBirth').errors.required">
+                Please enter a valid date
+              </small>
+              <small *ngIf="form.get('dateOfBirth').errors.matDatepickerMin || form.get('dateOfBirth').errors.matDatepickerMax">
+                You are out of a birth range
+              </small>
+            </div>
+          </div>
+          <input
+            appOnFocusTabsController
+            [matDatepicker]="picker"
+            id="dateOfBirth"
+            type="text"
+            formControlName="dateOfBirth"
+            placeholder="MM/DD/YYYY"
+            class="date-input"
+            [min]="minDate"
+            [max]="maxDate"
+            maxlength="10"
+            (keyup)="dateMask($event)"
+          >
+          <i class="hide-control">
+            <img
+              (click)="picker.open()"
+              src="assets/images/calendar.svg"
+              alt="choose date"
+            >
+          </i>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+        <!--      END of birthDate control-->
+
+        <!--      gender control-->
+        <div class="form-select">
+          <div>
+            <label for="gender">Gender</label>
+          </div>
+          <mat-form-field appearance="fill" id="gender">
+            <mat-select formControlName="gender">
+              <mat-option value="—" class="hidden">—</mat-option>
+              <mat-option *ngFor="let option of genders" [value]="option">{{option}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!--      END of gender control-->
+
+      </div>
+
+      <div class="physical-details">
+        <h4 class="title">Physical details</h4>
+
+        <!--      height control-->
+        <div class="form-control">
+          <div>
+            <label for="heightFt">Height</label>
+          </div>
+          <div class="inputs-row-height">
+            <input
+              appOnFocusTabsController
+              id="heightFt"
+              type="text"
+              [validation]="false"
+              mask="0"
+              suffix=" ft"
+              placeholder="0 ft"
+              formControlName="heightFt"
+              class="input-heightFt"
+              appChangeValueFt
+            >
+            <input
+              appOnFocusTabsController
+              id="heightIn"
+              type="text"
+              [validation]="false"
+              mask="00"
+              suffix=" in"
+              placeholder="0 in"
+              formControlName="heightIn"
+              class="input-heightIn"
+              appChangeValueIn
+            >
+          </div>
+        </div>
+        <!--      END of height control-->
+
+        <!--      weight control-->
+        <div class="form-control">
+          <div>
+            <label for="weight">Weight</label>
+          </div>
+          <input
+            appOnFocusTabsController
+            [validation]="false"
+            mask="000"
+            suffix=" lbs"
+            placeholder="0 lbs"
+            id="weight"
+            type="text"
+            formControlName="weight"
+          >
+        </div>
+
+        <div class="subtitle">
+          <span>Add photo</span>
+        </div>
+
+        <div class="photo-container">
+
+          <div>
+            <button
+              (click)="imageInput.click()"
+              mat-icon-button
+              class="button-add-photo"
+              type="button"
+              [disabled]="isRendering || isLoading"
+            >
+              <div *ngIf="imagePreview; else withoutAvatar">
+                <img [src]="imagePreview" class="circle-photo" alt="Photo">
+              </div>
+              <ng-template #withoutAvatar>
+                <img src="assets/images/add.svg" alt="Add">
+              </ng-template>
+            </button>
+          </div>
+
+          <button
+            type="button"
+            mat-button
+            class="button-remote-photo"
+            (click)="deleteUserPhoto()"
+            [disabled]="imagePreview === null || isRendering || isLoading"
+            [ngSwitch]="isRendering"
+          >
+            <span *ngSwitchCase="false">Remove photo</span>
+            <app-progress-spinner [color]="'#b0b0b0'" *ngSwitchCase="true"></app-progress-spinner>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form__footer">
+      <button
+        [disabled]="form.invalid || form.disabled || (currentAvatarState$ | async) === 'loading'"
+        mat-flat-button
+        class="primary-button"
+        type="submit"
+        [ngSwitch]="isLoading"
+      >
+        <span *ngSwitchCase="false">Save</span>
+        <app-progress-spinner *ngSwitchCase="true"></app-progress-spinner>
+      </button>
+    </div>
+
+    <!-- This input is only for the possibility of choosing a photo. Never displayed! -->
+    <input
+      #imageInput
+      id="imageInput"
+      type="file"
+      accept="image/jpeg, image/png, image/heic"
+      (change)="selectUserPhoto($event)"
+    >
+  </form>
+</div>
